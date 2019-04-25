@@ -15,6 +15,12 @@ const AdSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  purchaseBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Purchase',
+    required: false,
+    default: null
+  },
   price: {
     type: Number,
     required: true

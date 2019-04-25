@@ -6,7 +6,8 @@ const {
   UserController,
   SessionController,
   AdController,
-  PurchaseController
+  PurchaseController,
+  SalespersonController
 } = require('./app/controllers')
 
 const validators = require('./app/validators')
@@ -39,6 +40,14 @@ routes.post(
   '/purchases',
   validate(validators.Purchase),
   handle(PurchaseController.store)
+)
+
+// Salesperson routes
+routes.get('/purchases/requests/:user', handle(PurchaseController.requests))
+
+routes.post(
+  '/purchases/requests/accept/:purchase',
+  handle(PurchaseController.accept)
 )
 
 module.exports = routes
